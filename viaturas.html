@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaturas | Vicente Automóveis & Oficina</title>
+    <meta name="description" content="Descubra o nosso stock de viaturas usadas e seminovas em Pontével, Cartaxo. Todas as viaturas com garantia e confiança Vicente Auto.">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f0f0f',
+                            card: '#1a1a1a',
+                            light: '#252525',
+                            accent: '#f59e0b',
+                            accentHover: '#d97706'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER/NAV -->
+    <header id="header" class="fixed w-full top-0 z-50 glass-header shadow-lg transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 group">
+                        <div class="w-10 h-10 rounded-lg bg-brand-accent flex items-center justify-center text-white group-hover:bg-brand-accentHover transition-colors">
+                            <i data-lucide="car-front"></i>
+                        </div>
+                        <span class="font-bold text-xl tracking-tight">Vicente <span class="text-brand-accent">Auto</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="viaturas.html" class="text-brand-accent font-medium transition-colors">Viaturas</a>
+                    <a href="servicos.html" class="text-gray-300 hover:text-brand-accent font-medium transition-colors">Serviços</a>
+                    <a href="sobre-nos.html" class="text-gray-300 hover:text-brand-accent font-medium transition-colors">Sobre Nós</a>
+                    <a href="contactos.html" class="text-gray-300 hover:text-brand-accent font-medium transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Phone button desktop -->
+                <div class="hidden md:flex items-center">
+                    <a href="tel:+351913230398" class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors bg-brand-light px-4 py-2 rounded-full border border-gray-700 hover:border-brand-accent">
+                        <i data-lucide="phone" class="w-4 h-4 text-brand-accent"></i>
+                        <span class="font-medium">913 230 398</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex md:hidden items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="fixed inset-y-0 right-0 max-w-xs w-full bg-brand-dark shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l border-gray-800 md:hidden">
+            <div class="flex items-center justify-between p-4 border-b border-gray-800">
+                <span class="font-bold text-xl">Menu</span>
+                <button class="mobile-link text-gray-400 hover:text-white p-2">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="mobile-link block px-3 py-4 text-base font-medium text-gray-300 hover:bg-brand-light hover:text-brand-accent rounded-md border-b border-gray-800">Início</a>
+                <a href="viaturas.html" class="mobile-link block px-3 py-4 text-base font-medium text-white hover:bg-brand-light hover:text-brand-accent rounded-md border-b border-gray-800">Viaturas</a>
+                <a href="servicos.html" class="mobile-link block px-3 py-4 text-base font-medium text-gray-300 hover:bg-brand-light hover:text-brand-accent rounded-md border-b border-gray-800">Serviços</a>
+                <a href="sobre-nos.html" class="mobile-link block px-3 py-4 text-base font-medium text-gray-300 hover:bg-brand-light hover:text-brand-accent rounded-md border-b border-gray-800">Sobre Nós</a>
+                <a href="contactos.html" class="mobile-link block px-3 py-4 text-base font-medium text-gray-300 hover:bg-brand-light hover:text-brand-accent rounded-md border-b border-gray-800">Contacto</a>
+            </div>
+            <div class="p-4 mt-auto absolute bottom-0 w-full">
+                <a href="tel:+351913230398" class="flex items-center justify-center gap-2 w-full text-brand-dark bg-brand-accent font-bold px-4 py-3 rounded-lg">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    Ligar: 913 230 398
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SPACER for fixed header -->
+    <div class="pt-24"></div>
+
+    <!-- CAR SHOWROOM SECTION -->
+    <section class="py-12 relative" id="viaturas">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-1/3 h-[500px] bg-brand-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Viaturas em <span class="text-brand-accent">Stock</span></h2>
+                <p class="text-lg text-gray-400">Encontre o carro perfeito para as suas necessidades. Todas as nossas viaturas são rigorosamente inspecionadas na nossa oficina.</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-brand-card p-6 rounded-2xl border border-gray-800 mb-12 shadow-xl fade-up">
+                <div class="flex flex-col md:flex-row gap-4 items-end">
+                    <div class="w-full md:w-1/3">
+                        <label class="block text-sm font-medium text-gray-400 mb-2" for="filter-fuel">Combustível</label>
+                        <select id="filter-fuel" class="w-full bg-brand-dark border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-brand-accent appearance-none">
+                            <option value="all">Todos</option>
+                            <option value="Gasóleo">Gasóleo</option>
+                            <option value="Gasolina">Gasolina</option>
+                        </select>
+                    </div>
+                    <div class="w-full md:w-1/3">
+                        <label class="block text-sm font-medium text-gray-400 mb-2" for="filter-price">Preço</label>
+                        <select id="filter-price" class="w-full bg-brand-dark border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-brand-accent appearance-none">
+                            <option value="all">Todos os preços</option>
+                            <option value="under5k">Até 5.000€</option>
+                            <option value="5k-15k">5.000€ - 15.000€</option>
+                            <option value="over15k">Mais de 15.000€</option>
+                        </select>
+                    </div>
+                    <div class="w-full md:w-1/3">
+                        <label class="block text-sm font-medium text-gray-400 mb-2" for="filter-year">Ano</label>
+                        <select id="filter-year" class="w-full bg-brand-dark border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-brand-accent appearance-none">
+                            <option value="all">Todos os anos</option>
+                            <option value="2015+">2015 ou mais recente</option>
+                            <option value="2005-2014">2005 - 2014</option>
+                            <option value="pre2005">Antes de 2005</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Cars Message -->
+            <div id="no-cars-msg" class="hidden text-center py-12 bg-brand-card rounded-2xl border border-gray-800">
+                <i data-lucide="search-x" class="w-16 h-16 text-gray-600 mx-auto mb-4"></i>
+                <h3 class="text-xl font-bold text-white mb-2">Nenhuma viatura encontrada</h3>
+                <p class="text-gray-400 mb-6">Tente ajustar os filtros para encontrar o que procura.</p>
+                <button onclick="resetFilters()" class="text-brand-accent hover:text-brand-accentHover font-medium underline">Limpar filtros</button>
+            </div>
+
+            <!-- Cars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="cars-grid">
+                
+                <!-- Car 1: BMW -->
+                <article class="car-card bg-brand-card rounded-2xl overflow-hidden border border-gray-800 card-hover fade-up flex flex-col h-full relative" data-fuel="Gasóleo" data-price="15900" data-year="2015">
+                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="openGallery('bmw')">
+                        <img src="images/bmw/bmw-serie1-2.jpg" alt="BMW Série 1" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="bg-brand-accent text-brand-dark px-4 py-2 rounded-full font-bold flex items-center gap-2">
+                                <i data-lucide="camera" class="w-4 h-4"></i> Ver 13 Fotos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white leading-tight">BMW Série 1 <br><span class="text-sm font-normal text-gray-400">Full Pack M / Extras</span></h3>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4 mt-2">
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="calendar" class="w-4 h-4 text-gray-500"></i> Ano 2015</div>
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="gauge" class="w-4 h-4 text-gray-500"></i> 191.000 km</div>
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="fuel" class="w-4 h-4 text-gray-500"></i> Gasóleo</div>
+                        </div>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-800">
+                            <div class="text-2xl font-bold text-brand-accent mb-4">15.900€</div>
+                            <div class="flex gap-2">
+                                <button onclick="openGallery('bmw')" class="flex-1 flex items-center justify-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white font-medium py-2 px-3 rounded-lg transition-colors border border-gray-700 text-sm">
+                                    <i data-lucide="image" class="w-4 h-4"></i> Galeria
+                                </button>
+                                <a href="https://wa.me/351913230398?text=Olá,%20tenho%20interesse%20no%20BMW%20Série%201%20(15.900€)" target="_blank" class="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#1ebd5a] text-white font-medium py-2 px-3 rounded-lg transition-colors shadow-md text-sm">
+                                    <i data-lucide="message-circle" class="w-4 h-4"></i> Interesse
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Car 2: Opel Corsa -->
+                <article class="car-card bg-brand-card rounded-2xl overflow-hidden border border-gray-800 card-hover fade-up flex flex-col h-full relative" data-fuel="Gasolina" data-price="700" data-year="1996">
+                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="openGallery('corsa')">
+                        <img src="images/corsa/corsa-1.jpg" alt="Opel Corsa" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="bg-brand-accent text-brand-dark px-4 py-2 rounded-full font-bold flex items-center gap-2">
+                                <i data-lucide="camera" class="w-4 h-4"></i> Ver 5 Fotos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white leading-tight">Opel Corsa B <br><span class="text-sm font-normal text-gray-400">1.2 / Inspeção Válida</span></h3>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4 mt-2">
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="calendar" class="w-4 h-4 text-gray-500"></i> Ano 1996</div>
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="gauge" class="w-4 h-4 text-gray-500"></i> 222.000 km</div>
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="fuel" class="w-4 h-4 text-gray-500"></i> Gasolina</div>
+                        </div>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-800">
+                            <div class="text-2xl font-bold text-brand-accent mb-4">700€</div>
+                            <div class="flex gap-2">
+                                <button onclick="openGallery('corsa')" class="flex-1 flex items-center justify-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white font-medium py-2 px-3 rounded-lg transition-colors border border-gray-700 text-sm">
+                                    <i data-lucide="image" class="w-4 h-4"></i> Galeria
+                                </button>
+                                <a href="https://wa.me/351913230398?text=Olá,%20tenho%20interesse%20no%20Opel%20Corsa%20B%20(700€)" target="_blank" class="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#1ebd5a] text-white font-medium py-2 px-3 rounded-lg transition-colors shadow-md text-sm">
+                                    <i data-lucide="message-circle" class="w-4 h-4"></i> Interesse
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Car 3: Peugeot 308 -->
+                <article class="car-card bg-brand-card rounded-2xl overflow-hidden border border-gray-800 card-hover fade-up flex flex-col h-full relative" data-fuel="Gasóleo" data-price="12500" data-year="2016">
+                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="openGallery('peugeot')">
+                        <img src="images/peugeot/peugeot-308-5.jpg" alt="Peugeot 308" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="bg-brand-accent text-brand-dark px-4 py-2 rounded-full font-bold flex items-center gap-2">
+                                <i data-lucide="camera" class="w-4 h-4"></i> Ver 6 Fotos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white leading-tight">Peugeot 308 <br><span class="text-sm font-normal text-gray-400">Excelente estado</span></h3>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4 mt-2">
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="calendar" class="w-4 h-4 text-gray-500"></i> Ano 2016</div>
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="gauge" class="w-4 h-4 text-gray-500"></i> 109.000 km</div>
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="fuel" class="w-4 h-4 text-gray-500"></i> Gasóleo</div>
+                        </div>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-800">
+                            <div class="text-2xl font-bold text-brand-accent mb-4">12.500€</div>
+                            <div class="flex gap-2">
+                                <button onclick="openGallery('peugeot')" class="flex-1 flex items-center justify-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white font-medium py-2 px-3 rounded-lg transition-colors border border-gray-700 text-sm">
+                                    <i data-lucide="image" class="w-4 h-4"></i> Galeria
+                                </button>
+                                <a href="https://wa.me/351913230398?text=Olá,%20tenho%20interesse%20no%20Peugeot%20308%20(12.500€)" target="_blank" class="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#1ebd5a] text-white font-medium py-2 px-3 rounded-lg transition-colors shadow-md text-sm">
+                                    <i data-lucide="message-circle" class="w-4 h-4"></i> Interesse
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Car 4: VW Polo -->
+                <article class="car-card bg-brand-card rounded-2xl overflow-hidden border border-gray-800 card-hover fade-up flex flex-col h-full relative" data-fuel="Gasolina" data-price="3900" data-year="2007">
+                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="openGallery('polo')">
+                        <img src="images/polo/polo-4.jpg" alt="Volkswagen Polo" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="bg-brand-accent text-brand-dark px-4 py-2 rounded-full font-bold flex items-center gap-2">
+                                <i data-lucide="camera" class="w-4 h-4"></i> Ver 9 Fotos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white leading-tight">Volkswagen Polo <br><span class="text-sm font-normal text-gray-400">AC / Sensores</span></h3>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4 mt-2">
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="calendar" class="w-4 h-4 text-gray-500"></i> Ano 2007</div>
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="gauge" class="w-4 h-4 text-gray-500"></i> 169.000 km</div>
+                            <div class="flex items-center text-sm text-gray-400 gap-2"><i data-lucide="fuel" class="w-4 h-4 text-gray-500"></i> Gasolina</div>
+                        </div>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-800">
+                            <div class="text-2xl font-bold text-brand-accent mb-4">3.900€</div>
+                            <div class="flex gap-2">
+                                <button onclick="openGallery('polo')" class="flex-1 flex items-center justify-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white font-medium py-2 px-3 rounded-lg transition-colors border border-gray-700 text-sm">
+                                    <i data-lucide="image" class="w-4 h-4"></i> Galeria
+                                </button>
+                                <a href="https://wa.me/351913230398?text=Olá,%20tenho%20interesse%20no%20Volkswagen%20Polo%20(3.900€)" target="_blank" class="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#1ebd5a] text-white font-medium py-2 px-3 rounded-lg transition-colors shadow-md text-sm">
+                                    <i data-lucide="message-circle" class="w-4 h-4"></i> Interesse
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0a0a0a] border-t border-gray-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                
+                <div class="md:col-span-1">
+                    <a href="index.html" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-md bg-brand-accent flex items-center justify-center text-white">
+                            <i data-lucide="car-front" class="w-5 h-5"></i>
+                        </div>
+                        <span class="font-bold text-lg tracking-tight">Vicente <span class="text-brand-accent">Auto</span></span>
+                    </a>
+                    <p class="text-gray-500 text-sm mb-6">O seu stand e oficina mecânica de confiança no concelho do Cartaxo. Qualidade e transparência desde o primeiro dia.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="viaturas.html" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">Viaturas em Stock</a></li>
+                        <li><a href="servicos.html" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">Serviços de Oficina</a></li>
+                        <li><a href="sobre-nos.html" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">Sobre Nós</a></li>
+                        <li><a href="contactos.html" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">Contactos</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4">Serviços</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://wa.me/351913230398?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Mecânica%20Geral%20e%20valores." target="_blank" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">Mecânica Geral</a></li>
+                        <li><a href="https://wa.me/351913230398?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Pintura%20Auto%20e%20valores." target="_blank" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">Pintura Auto</a></li>
+                        <li><a href="https://wa.me/351913230398?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Bate-Chapas%20e%20valores." target="_blank" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">Bate-Chapas</a></li>
+                        <li><a href="https://wa.me/351913230398?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Pre-Inspeção%20IPO%20e%20valores." target="_blank" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">Pre-Inspeção IPO</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contactos</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-accent mt-0.5"></i>
+                            <a href="https://maps.google.com/?q=39.154778,-8.806148" target="_blank" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">Pontével, Cartaxo, PT</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-accent"></i>
+                            <a href="tel:+351913230398" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">+351 913 230 398</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-accent"></i>
+                            <a href="mailto:geral@vicenteauto.pt" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">geral@vicenteauto.pt</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-sm">© 2026 Vicente Auto. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/351913230398" target="_blank" rel="noopener" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg z-40 hover:scale-110 transition-transform whatsapp-float">
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+    </a>
+
+    <!-- GALLERY MODAL -->
+    <div id="gallery-modal" class="fixed inset-0 z-[100] bg-black/95 modal hidden flex flex-col">
+        <!-- Modal Header -->
+        <div class="flex justify-between items-center p-4 border-b border-gray-800">
+            <div class="text-white font-medium" id="gallery-counter">1 / X</div>
+            <button id="close-gallery" class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="flex-1 relative flex items-center justify-center p-8">
+            <!-- Prev Button -->
+            <button id="prev-btn" class="absolute left-4 md:left-12 z-10 w-12 h-12 hidden md:flex items-center justify-center bg-black/50 text-white rounded-full hover:bg-brand-accent transition-colors border border-gray-600 shadow-xl">
+                <i data-lucide="chevron-left" class="w-6 h-6"></i>
+            </button>
+            
+            <!-- Image with controlled sizing and styling -->
+            <div class="relative max-w-5xl w-full max-h-[80vh] flex items-center justify-center">
+                <img id="gallery-main-img" src="" alt="Galeria de imagens" class="max-h-[80vh] w-auto max-w-full object-contain rounded-lg shadow-2xl border border-gray-800 select-none bg-brand-card">
+            </div>
+            
+            <!-- Next Button -->
+            <button id="next-btn" class="absolute right-4 md:right-12 z-10 w-12 h-12 hidden md:flex items-center justify-center bg-black/50 text-white rounded-full hover:bg-brand-accent transition-colors border border-gray-600 shadow-xl">
+                <i data-lucide="chevron-right" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation Controls (Bottom) -->
+        <div class="md:hidden flex justify-center gap-4 p-4 border-t border-gray-800">
+            <button id="prev-btn-mobile" class="w-12 h-12 flex items-center justify-center bg-brand-light text-white rounded-full active:bg-brand-accent border border-gray-600">
+                <i data-lucide="chevron-left" class="w-6 h-6"></i>
+            </button>
+            <button id="next-btn-mobile" class="w-12 h-12 flex items-center justify-center bg-brand-light text-white rounded-full active:bg-brand-accent border border-gray-600">
+                <i data-lucide="chevron-right" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
+</body>
+</html>

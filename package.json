@@ -1,0 +1,12 @@
+{
+  "name": "stand-automovel-cartaxo",
+  "version": "1.0.0",
+  "description": "Stand de Automóveis e Oficina Mecânica - Vicente Auto, Pontével, Cartaxo",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": ["stand", "automóveis", "cartaxo", "oficina", "mecânica"],
+  "author": "Vicente Auto",
+  "license": "MIT"
+}
