@@ -221,3 +221,26 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') nextImage();
     if (e.key === 'ArrowLeft') prevImage();
 });
+
+// Mobile Hero Carousel
+const carouselImages = document.querySelectorAll('.mobile-hero-carousel .carousel-img');
+if (carouselImages.length > 0) {
+    let currentImageIndex = 0;
+    setInterval(() => {
+        carouselImages[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+        carouselImages[currentImageIndex].classList.add('active');
+    }, 3500);
+}
+
+// Mobile Folder Footer Tabs
+window.switchFooterTab = function(tabId) {
+    document.querySelectorAll('.mobile-folder-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.mobile-folder-content').forEach(c => c.classList.remove('active'));
+    
+    const selectedTab = document.querySelector(`.mobile-folder-tab[onclick="switchFooterTab('${tabId}')"]`);
+    const selectedContent = document.getElementById(tabId);
+    
+    if (selectedTab) selectedTab.classList.add('active');
+    if (selectedContent) selectedContent.classList.add('active');
+}

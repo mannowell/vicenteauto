@@ -152,7 +152,7 @@
     <!-- FOOTER -->
     <footer class="bg-[#0a0a0a] border-t border-gray-900 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="hidden md:grid md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-1 text-center md:text-left">
                     <a href="index.html" class="flex items-center justify-center md:justify-start gap-2 mb-4">
                         <div class="w-8 h-8 rounded-md bg-brand-accent flex items-center justify-center text-white">
@@ -188,6 +188,61 @@
                         <li class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-brand-accent"></i><a href="mailto:geral@vicenteauto.pt" class="text-gray-500 hover:text-brand-accent text-sm transition-colors">geral@vicenteauto.pt</a></li>
                     </ul>
                 </div>
+            </div>
+
+            <!-- Mobile Folder Footer (Mobile Only) -->
+            <div class="block md:hidden mb-8">
+                <div class="mobile-folder-tabs pt-2">
+                    <div class="mobile-folder-tab active" onclick="switchFooterTab('tab-empresa')">Empresa</div>
+                    <div class="mobile-folder-tab" onclick="switchFooterTab('tab-links')">Links</div>
+                    <div class="mobile-folder-tab" onclick="switchFooterTab('tab-servicos')">Serviços</div>
+                    <div class="mobile-folder-tab" onclick="switchFooterTab('tab-contactos')">Contactos</div>
+                </div>
+                <div id="tab-empresa" class="mobile-folder-content active">
+                    <a href="index.html" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-md bg-brand-accent flex items-center justify-center text-white">
+                            <i data-lucide="car-front" class="w-5 h-5"></i>
+                        </div>
+                        <span class="font-bold text-lg tracking-tight text-white">Vicente <span class="text-brand-accent">Auto</span></span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed">O seu stand e oficina mecânica de confiança no concelho do Cartaxo. Qualidade e transparência desde o primeiro dia.</p>
+                </div>
+                <div id="tab-links" class="mobile-folder-content">
+                    <ul class="space-y-3">
+                        <li><a href="viaturas.html" class="flex items-center text-gray-400 hover:text-white transition-colors"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2"></i>Viaturas em Stock</a></li>
+                        <li><a href="servicos.html" class="flex items-center text-gray-400 hover:text-white transition-colors"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2"></i>Serviços de Oficina</a></li>
+                        <li><a href="sobre-nos.html" class="flex items-center text-gray-400 hover:text-white transition-colors"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2"></i>Sobre Nós</a></li>
+                        <li><a href="contactos.html" class="flex items-center text-gray-400 hover:text-white transition-colors"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2"></i>Contactos</a></li>
+                    </ul>
+                </div>
+                <div id="tab-servicos" class="mobile-folder-content">
+                    <ul class="space-y-3">
+                        <li><a href="https://wa.me/351913230398?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Mecânica%20Geral%20e%20valores." class="flex items-center text-gray-400 hover:text-white transition-colors"><i data-lucide="wrench" class="w-4 h-4 text-brand-accent mr-2"></i>Mecânica Geral</a></li>
+                        <li><a href="https://wa.me/351913230398?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Pintura%20Auto%20e%20valores." class="flex items-center text-gray-400 hover:text-white transition-colors"><i data-lucide="paintbrush" class="w-4 h-4 text-brand-accent mr-2"></i>Pintura Auto</a></li>
+                        <li><a href="https://wa.me/351913230398?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Bate-Chapas%20e%20valores." class="flex items-center text-gray-400 hover:text-white transition-colors"><i data-lucide="hammer" class="w-4 h-4 text-brand-accent mr-2"></i>Bate-Chapas</a></li>
+                        <li><a href="https://wa.me/351913230398?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Pre-Inspeção%20IPO%20e%20valores." class="flex items-center text-gray-400 hover:text-white transition-colors"><i data-lucide="clipboard-check" class="w-4 h-4 text-brand-accent mr-2"></i>Pre-Inspeção IPO</a></li>
+                    </ul>
+                </div>
+                <div id="tab-contactos" class="mobile-folder-content">
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-accent mt-0.5"></i>
+                            <a href="https://maps.google.com/?q=39.154778,-8.806148" class="text-gray-400 hover:text-white transition-colors">Pontével, Cartaxo, PT</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-brand-accent"></i>
+                            <a href="tel:+351913230398" class="text-gray-400 hover:text-white font-bold text-lg transition-colors">+351 913 230 398</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-brand-accent"></i>
+                            <a href="mailto:geral@vicenteauto.pt" class="text-gray-400 hover:text-white transition-colors">geral@vicenteauto.pt</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-sm">© 2026 Vicente Auto. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
