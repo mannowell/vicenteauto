@@ -222,15 +222,38 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') prevImage();
 });
 
+// Hero Carousels (Mobile & Desktop)
+const carTitles = [
+    "BMW Série 1 Pack M",
+    "Peugeot 308",
+    "Volkswagen Polo",
+    "Opel Corsa B 1.2"
+];
+
 // Mobile Hero Carousel
-const carouselImages = document.querySelectorAll('.mobile-hero-carousel .carousel-img');
-if (carouselImages.length > 0) {
+const mobileCarouselImages = document.querySelectorAll('.mobile-hero-carousel .carousel-img');
+if (mobileCarouselImages.length > 0) {
     let currentImageIndex = 0;
     setInterval(() => {
-        carouselImages[currentImageIndex].classList.remove('active');
-        currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
-        carouselImages[currentImageIndex].classList.add('active');
-    }, 3500);
+        mobileCarouselImages[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % mobileCarouselImages.length;
+        mobileCarouselImages[currentImageIndex].classList.add('active');
+    }, 3000); // Changed to 3 seconds
+}
+
+// Desktop Hero Carousel
+const desktopCarouselImages = document.querySelectorAll('.desktop-hero-carousel .carousel-img');
+const desktopTitleElem = document.getElementById('desktop-carousel-title');
+if (desktopCarouselImages.length > 0) {
+    let currentImageIndex = 0;
+    setInterval(() => {
+        desktopCarouselImages[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % desktopCarouselImages.length;
+        desktopCarouselImages[currentImageIndex].classList.add('active');
+        if (desktopTitleElem && carTitles[currentImageIndex]) {
+            desktopTitleElem.textContent = carTitles[currentImageIndex];
+        }
+    }, 3000); // Changed to 3 seconds
 }
 
 // Mobile Folder Footer Tabs
@@ -238,7 +261,12 @@ window.switchFooterTab = function(tabId) {
     document.querySelectorAll('.mobile-folder-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.mobile-folder-content').forEach(c => c.classList.remove('active'));
     
-    const selectedTab = document.querySelector(`.mobile-folder-tab[onclick="switchFooterTab('${tabId}')"]`);
+    // Select tab by matching the onclick attribute content
+    const selectedTab = Array.from(document.querySelectorAll('.mobile-folder-tab')).find(tab => {
+        const onclickAttr = tab.getAttribute('onclick') || '';
+        return onclickAttr.includes(tabId);
+    });
+    
     const selectedContent = document.getElementById(tabId);
     
     if (selectedTab) selectedTab.classList.add('active');
