@@ -2,29 +2,46 @@
 lucide.createIcons();
 
 // Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileLinks = document.querySelectorAll('.mobile-link');
-
 let isMenuOpen = false;
 
-function toggleMenu() {
-    if (!mobileMenu) return;
-    isMenuOpen = !isMenuOpen;
-    if (isMenuOpen) {
-        mobileMenu.classList.remove('translate-x-full');
-        document.body.style.overflow = 'hidden';
-    } else {
-        mobileMenu.classList.add('translate-x-full');
-        document.body.style.overflow = '';
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const header = document.getElementById('header');
+    
+    // Create overlay
+    const mobileOverlay = document.createElement('div');
+    mobileOverlay.id = 'mobile-overlay';
+    mobileOverlay.className = 'fixed inset-0 bg-black/80 z-[55] hidden transition-opacity duration-300 md:hidden';
+    
+    // Move mobile menu out of header to fix transparency / backdrop-filter bugs
+    if (mobileMenu && header) {
+        mobileMenu.classList.remove('z-50');
+        mobileMenu.classList.add('z-[60]');
+        header.parentNode.insertBefore(mobileOverlay, header.nextSibling);
+        header.parentNode.insertBefore(mobileMenu, mobileOverlay.nextSibling);
     }
-}
 
-if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', toggleMenu);
-}
-mobileLinks.forEach(link => {
-    link.addEventListener('click', toggleMenu);
+    window.toggleMenu = function() {
+        if (!mobileMenu) return;
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        } else {
+            mobileMenu.classList.add('translate-x-full');
+            mobileOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    };
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+    if (mobileOverlay) mobileOverlay.addEventListener('click', toggleMenu);
+    
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', toggleMenu);
+    });
 });
 
 // Sticky Header Effect
