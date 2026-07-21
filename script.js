@@ -14,12 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileOverlay.id = 'mobile-overlay';
     mobileOverlay.className = 'fixed inset-0 bg-black/80 z-[55] hidden transition-opacity duration-300 md:hidden';
     
-    // Move mobile menu out of header to fix transparency / backdrop-filter bugs
-    if (mobileMenu && header) {
-        mobileMenu.classList.remove('z-50');
-        mobileMenu.classList.add('z-[60]');
-        header.parentNode.insertBefore(mobileOverlay, header.nextSibling);
-        header.parentNode.insertBefore(mobileMenu, mobileOverlay.nextSibling);
+    // Insert overlay before menu
+    if (mobileMenu) {
+        mobileMenu.parentNode.insertBefore(mobileOverlay, mobileMenu);
     }
 
     window.toggleMenu = function() {

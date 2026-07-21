@@ -87,7 +87,10 @@
         </div>
 
         <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="fixed inset-y-0 right-0 max-w-xs w-full bg-brand-dark shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l border-gray-800 md:hidden">
+        </header>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 max-w-xs w-full bg-[#050505] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l border-gray-800 md:hidden">
             <div class="flex items-center justify-between p-4 border-b border-gray-800">
                 <span class="font-bold text-xl">Menu</span>
                 <button class="mobile-link text-gray-400 hover:text-white p-2">
@@ -108,7 +111,7 @@
                 </a>
             </div>
         </div>
-    </header>
+    
 
     <!-- SPACER for fixed header -->
     <div class="pt-24"></div>
@@ -125,7 +128,12 @@
             </div>
 
             <!-- Filters -->
-            <div class="bg-brand-card p-6 rounded-2xl border border-gray-800 mb-12 shadow-xl fade-up">
+            <!-- Mobile Filter Toggle -->
+            <button onclick="document.getElementById('filters-container').classList.toggle('hidden')" class="md:hidden w-full flex items-center justify-center gap-2 bg-brand-card border border-gray-800 text-white py-4 rounded-xl mb-6 font-medium shadow-lg active:scale-95 transition-transform">
+                <i data-lucide="filter" class="w-5 h-5 text-brand-accent"></i> Filtrar Viaturas
+            </button>
+            
+            <div id="filters-container" class="bg-brand-card p-6 rounded-2xl border border-gray-800 mb-12 shadow-xl hidden md:block fade-up">
                 <div class="flex flex-col md:flex-row gap-4 items-end">
                     <div class="w-full md:w-1/3">
                         <label class="block text-sm font-medium text-gray-400 mb-2" for="filter-fuel">Combustível</label>
@@ -316,8 +324,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 
-                <div class="md:col-span-1">
-                    <a href="index.html" class="flex items-center gap-2 mb-4">
+                <div class="md:col-span-1 text-center md:text-left">
+                    <a href="index.html" class="flex items-center justify-center md:justify-start gap-2 mb-4">
                         <div class="w-8 h-8 rounded-md bg-brand-accent flex items-center justify-center text-white">
                             <i data-lucide="car-front" class="w-5 h-5"></i>
                         </div>
