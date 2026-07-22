@@ -604,3 +604,90 @@ window.switchFooterTab = function(tabId) {
     if (selectedTab) selectedTab.classList.add('active');
     if (selectedContent) selectedContent.classList.add('active');
 }
+
+// FAQ Accordion Toggle Logic
+window.toggleFaq = function(button) {
+    const faqItem = button.closest('.faq-item');
+    if (!faqItem) return;
+    const content = faqItem.querySelector('.faq-content');
+    const icon = faqItem.querySelector('.icon-chevron');
+
+    const isActive = faqItem.classList.contains('active');
+
+    // Close other FAQs
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+        const itemContent = item.querySelector('.faq-content');
+        if (itemContent) itemContent.style.maxHeight = '0px';
+        const itemIcon = item.querySelector('.icon-chevron');
+        if (itemIcon) itemIcon.style.transform = '';
+    });
+
+    if (!isActive) {
+        faqItem.classList.add('active');
+        if (content) content.style.maxHeight = content.scrollHeight + 'px';
+        if (icon) icon.style.transform = 'rotate(180deg)';
+    }
+};
+
+// Sourcing Form Handler (Encomenda de Viatura)
+const sourcingForm = document.getElementById('sourcing-form');
+const sourcingSuccess = document.getElementById('sourcing-success');
+
+if (sourcingForm) {
+    sourcingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const submitBtn = sourcingForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> A submeter...`;
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+
+        setTimeout(() => {
+            if (sourcingSuccess) {
+                sourcingSuccess.classList.remove('hidden');
+            }
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        }, 1200);
+    });
+}
+
+window.resetSourcingForm = function() {
+    if (sourcingForm) sourcingForm.reset();
+    if (sourcingSuccess) sourcingSuccess.classList.add('hidden');
+};
+
+window.submitSourcingToWhatsApp = function() {
+    if (!sourcingForm) return;
+
+    const name = document.getElementById('source-name').value.trim();
+    const phone = document.getElementById('source-phone').value.trim();
+    const brand = document.getElementById('source-brand').value.trim();
+    const budget = document.getElementById('source-budget').value.trim();
+    const fuel = document.getElementById('source-fuel').value;
+    const year = document.getElementById('source-year').value;
+    const gearbox = document.getElementById('source-gearbox').value;
+    const notes = document.getElementById('source-notes').value.trim();
+
+    if (!name || !phone || !brand || !budget || !fuel || !year) {
+        alert("Por favor, preencha todos os campos obrigatórios (*) antes de enviar para o WhatsApp.");
+        return;
+    }
+
+    let text = `Olá, gostaria de solicitar uma encomenda de viatura personalizada:\n\n`;
+    text += `👤 *Nome:* ${name}\n`;
+    text += `📞 *Telemóvel:* ${phone}\n`;
+    text += `🚗 *Viatura Pretendida:* ${brand}\n`;
+    text += `💰 *Orçamento Máximo:* ${budget}\n`;
+    text += `⛽ *Combustível:* ${fuel}\n`;
+    text += `📅 *Ano Mínimo:* ${year}\n`;
+    text += `⚙️ *Caixa de Velocidades:* ${gearbox}\n`;
+    if (notes) {
+        text += `📝 *Extras/Preferências:* ${notes}\n`;
+    }
+
+    const waUrl = `https://wa.me/351913230398?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, '_blank');
+};

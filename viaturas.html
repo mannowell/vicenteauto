@@ -141,39 +141,48 @@
                 </div>
             </div>
 
-            <!-- Filters -->
+            <!-- Filters Control Bar (Updated for premium styling) -->
             <!-- Mobile Filter Toggle -->
-            <button onclick="document.getElementById('filters-container').classList.toggle('hidden')" class="md:hidden w-full flex items-center justify-center gap-2 bg-brand-card border border-gray-800 text-white py-4 rounded-xl mb-6 font-medium shadow-lg active:scale-95 transition-transform">
+            <button onclick="document.getElementById('filters-container').classList.toggle('hidden')" class="lg:hidden w-full flex items-center justify-center gap-2 bg-brand-card border border-gray-800 text-white py-4 rounded-xl mb-6 font-medium shadow-lg active:scale-95 transition-transform">
                 <i data-lucide="filter" class="w-5 h-5 text-brand-accent"></i> Filtrar por Categoria
             </button>
             
-            <div id="filters-container" class="bg-brand-card p-6 rounded-2xl border border-gray-800 mb-12 shadow-xl hidden md:block fade-up">
+            <div id="filters-container" class="bg-brand-card p-6 rounded-2xl border border-gray-800/80 mb-12 shadow-xl hidden lg:block fade-up">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="w-full">
-                        <label class="block text-sm font-medium text-gray-400 mb-2" for="filter-fuel">Combustível</label>
-                        <select id="filter-fuel" class="w-full bg-brand-dark border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-brand-accent appearance-none">
-                            <option value="all">Todos</option>
-                            <option value="Gasóleo">Gasóleo</option>
-                            <option value="Gasolina">Gasolina</option>
-                        </select>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2.5" for="filter-fuel">Combustível</label>
+                        <div class="relative">
+                            <select id="filter-fuel" class="w-full bg-brand-dark border border-gray-800 hover:border-gray-700 focus:border-brand-accent text-white rounded-xl px-4 py-3.5 focus:outline-none appearance-none transition-all cursor-pointer">
+                                <option value="all">Todos os combustíveis</option>
+                                <option value="Gasóleo">Gasóleo</option>
+                                <option value="Gasolina">Gasolina</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                        </div>
                     </div>
                     <div class="w-full">
-                        <label class="block text-sm font-medium text-gray-400 mb-2" for="filter-price">Preço</label>
-                        <select id="filter-price" class="w-full bg-brand-dark border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-brand-accent appearance-none">
-                            <option value="all">Todos os preços</option>
-                            <option value="under5k">Até 5.000€</option>
-                            <option value="5k-15k">5.000€ - 15.000€</option>
-                            <option value="over15k">Mais de 15.000€</option>
-                        </select>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2.5" for="filter-price">Preço Máximo</label>
+                        <div class="relative">
+                            <select id="filter-price" class="w-full bg-brand-dark border border-gray-800 hover:border-gray-700 focus:border-brand-accent text-white rounded-xl px-4 py-3.5 focus:outline-none appearance-none transition-all cursor-pointer">
+                                <option value="all">Qualquer preço</option>
+                                <option value="under5k">Até 5.000€</option>
+                                <option value="5k-15k">5.000€ - 15.000€</option>
+                                <option value="over15k">Mais de 15.000€</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                        </div>
                     </div>
                     <div class="w-full">
-                        <label class="block text-sm font-medium text-gray-400 mb-2" for="filter-year">Ano</label>
-                        <select id="filter-year" class="w-full bg-brand-dark border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-brand-accent appearance-none">
-                            <option value="all">Todos os anos</option>
-                            <option value="2015+">2015 ou mais recente</option>
-                            <option value="2005-2014">2005 - 2014</option>
-                            <option value="pre2005">Antes de 2005</option>
-                        </select>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2.5" for="filter-year">Ano de Matrícula</label>
+                        <div class="relative">
+                            <select id="filter-year" class="w-full bg-brand-dark border border-gray-800 hover:border-gray-700 focus:border-brand-accent text-white rounded-xl px-4 py-3.5 focus:outline-none appearance-none transition-all cursor-pointer">
+                                <option value="all">Qualquer ano</option>
+                                <option value="2015+">2015 ou mais recente</option>
+                                <option value="2005-2014">2005 - 2014</option>
+                                <option value="pre2005">Antes de 2005</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -330,6 +339,113 @@
                 </article>
 
             </div>
+
+            <!-- VEHICLE SOURCING FORM (ENCOMENDA DE VIATURA) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-24 pt-12 border-t border-gray-800/80 items-stretch">
+                <!-- Sourcing Info Left -->
+                <div class="lg:col-span-5 flex flex-col justify-between bg-brand-card p-8 rounded-3xl border border-gray-800/80 fade-up relative overflow-hidden">
+                    <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-brand-accent/5 rounded-full blur-2xl"></div>
+                    <div>
+                        <span class="text-xs text-brand-accent font-bold uppercase tracking-widest bg-brand-accent/10 px-3 py-1.5 rounded-full border border-brand-accent/20">Encomenda Personalizada</span>
+                        <h3 class="text-3xl font-extrabold text-white mt-4 mb-4">Não encontra o carro <br>dos seus <span class="text-brand-accent">Sonhos</span>?</h3>
+                        <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6">
+                            Temos uma vasta rede de parceiros nacionais e internacionais. Se procura uma marca, modelo, motorização ou cor específica, diga-nos exatamente o que quer e nós tratamos de todo o processo de importação e legalização com garantia total.
+                        </p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-sm text-gray-300">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-brand-accent shrink-0"></i>
+                            <span>Importação segura de canais certificados</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-gray-300">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-brand-accent shrink-0"></i>
+                            <span>Legalização e entrega chave na mão incluídas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sourcing Form Right -->
+                <div class="lg:col-span-7 bg-brand-card p-8 rounded-3xl border border-gray-800/80 fade-up relative overflow-hidden shadow-2xl">
+                    <div class="absolute -right-16 -top-16 w-32 h-32 bg-brand-accent/5 rounded-full blur-2xl"></div>
+
+                    <h3 class="text-2xl font-bold text-white mb-2">Encomendar Viatura</h3>
+                    <p class="text-gray-400 text-sm mb-6">Preencha os seus requisitos abaixo e entraremos em contacto com propostas detalhadas.</p>
+
+                    <form id="sourcing-form" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="source-name" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Nome Completo *</label>
+                                <input type="text" id="source-name" required placeholder="Seu nome" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label for="source-phone" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Telemóvel *</label>
+                                <input type="tel" id="source-phone" required placeholder="912 345 678" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="source-brand" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Marca & Modelo Pretendidos *</label>
+                                <input type="text" id="source-brand" required placeholder="Ex: Mercedes Classe A" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label for="source-budget" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Orçamento Máximo (€) *</label>
+                                <input type="text" id="source-budget" required placeholder="Ex: 20.000€" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                            <div>
+                                <label for="source-fuel" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Combustível *</label>
+                                <select id="source-fuel" required class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors appearance-none">
+                                    <option value="" disabled selected>Escolha</option>
+                                    <option value="Gasóleo">Gasóleo</option>
+                                    <option value="Gasolina">Gasolina</option>
+                                    <option value="Híbrido">Híbrido</option>
+                                    <option value="Elétrico">Elétrico</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="source-year" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Ano Mínimo *</label>
+                                <input type="number" id="source-year" required placeholder="Ex: 2018" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label for="source-gearbox" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Caixa de Velocidades</label>
+                                <select id="source-gearbox" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors appearance-none">
+                                    <option value="Indiferente" selected>Indiferente</option>
+                                    <option value="Manual">Manual</option>
+                                    <option value="Automática">Automática</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="source-notes" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Outras Preferências ou Extras Desejados</label>
+                            <textarea id="source-notes" rows="3" placeholder="Ex: Pack desportivo, teto de abrir, sensores, câmara traseira..." class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors resize-none"></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                            <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-brand-dark font-bold py-4 px-6 rounded-xl transition-all shadow-[0_4px_12px_rgba(245,158,11,0.2)] hover:scale-[1.01] flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i> Enviar Pedido
+                            </button>
+                            <button type="button" onclick="submitSourcingToWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-4 px-6 rounded-xl transition-all shadow-[0_4px_12px_rgba(37,211,102,0.2)] hover:scale-[1.01] flex items-center justify-center gap-2">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i> Pedir via WhatsApp
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Success State -->
+                    <div id="sourcing-success" class="hidden absolute inset-0 bg-brand-card flex flex-col items-center justify-center p-8 text-center animate-[fadeInTab_0.4s_ease-out_forwards]">
+                        <div class="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent mb-4 border border-brand-accent/20">
+                            <i data-lucide="check-circle" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-2">Pedido de Encomenda Registado!</h4>
+                        <p class="text-gray-400 max-w-sm mb-6 text-sm">Registámos os dados do veículo pretendido. A nossa equipa irá analisar o mercado e os parceiros internacionais e enviar-lhe-á propostas em breve.</p>
+                        <button onclick="resetSourcingForm()" class="text-brand-accent hover:text-brand-accentHover text-sm font-semibold underline">Fazer outra encomenda</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
