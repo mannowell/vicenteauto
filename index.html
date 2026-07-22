@@ -214,7 +214,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Car 1: BMW -->
                 <article class="car-card bg-brand-card rounded-2xl overflow-hidden border border-gray-800 card-hover fade-up flex flex-col h-full">
-                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="window.location.href='viaturas.html'">
+                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="openGallery('bmw')">
                         <img src="images/bmw/bmw-serie1-2.jpg" alt="BMW Série 1 Pack M" class="w-full h-full object-cover">
                         <div class="absolute top-4 left-4 bg-brand-accent text-brand-dark text-xs font-bold px-3 py-1 rounded-full shadow-lg">DESTAQUE</div>
                     </div>
@@ -226,14 +226,14 @@
                         </div>
                         <div class="mt-auto pt-4 border-t border-gray-800 flex items-end justify-between">
                             <div><div class="text-xs text-gray-500 uppercase font-medium">Preço</div><div class="text-2xl font-bold text-brand-accent">15.900€</div></div>
-                            <a href="viaturas.html" class="flex items-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors border border-gray-700">Mais Info</a>
+                            <button onclick="openGallery('bmw')" class="flex items-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors border border-gray-700">Mais Info</button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Car 2: Peugeot -->
                 <article class="car-card bg-brand-card rounded-2xl overflow-hidden border border-gray-800 card-hover fade-up flex flex-col h-full">
-                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="window.location.href='viaturas.html'">
+                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="openGallery('peugeot')">
                         <img src="images/peugeot/peugeot-308-5.jpg" alt="Peugeot 308" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
@@ -244,14 +244,14 @@
                         </div>
                         <div class="mt-auto pt-4 border-t border-gray-800 flex items-end justify-between">
                             <div><div class="text-xs text-gray-500 uppercase font-medium">Preço</div><div class="text-2xl font-bold text-brand-accent">12.500€</div></div>
-                            <a href="viaturas.html" class="flex items-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors border border-gray-700">Mais Info</a>
+                            <button onclick="openGallery('peugeot')" class="flex items-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors border border-gray-700">Mais Info</button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Car 3: Polo -->
                 <article class="car-card bg-brand-card rounded-2xl overflow-hidden border border-gray-800 card-hover fade-up flex flex-col h-full hidden lg:flex">
-                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="window.location.href='viaturas.html'">
+                    <div class="relative h-56 overflow-hidden img-hover group cursor-pointer" onclick="openGallery('polo')">
                         <img src="images/polo/polo-4.jpg" alt="Volkswagen Polo" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
@@ -262,13 +262,122 @@
                         </div>
                         <div class="mt-auto pt-4 border-t border-gray-800 flex items-end justify-between">
                             <div><div class="text-xs text-gray-500 uppercase font-medium">Preço</div><div class="text-2xl font-bold text-brand-accent">3.900€</div></div>
-                            <a href="viaturas.html" class="flex items-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors border border-gray-700">Mais Info</a>
+                            <button onclick="openGallery('polo')" class="flex items-center gap-1.5 bg-brand-light hover:bg-gray-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors border border-gray-700">Mais Info</button>
                         </div>
                     </div>
                 </article>
             </div>
         </div>
     </section>
+
+    <!-- DYNAMIC INTERACTIVE DETAILS & GALLERY MODAL -->
+    <div id="gallery-modal" class="fixed inset-0 z-[100] bg-black/95 modal hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-brand-dark border border-gray-800 w-full max-w-6xl rounded-2xl overflow-hidden shadow-2xl flex flex-col lg:flex-row max-h-[90vh] my-8">
+
+            <!-- Left Side: Interactive Gallery -->
+            <div class="w-full lg:w-3/5 bg-black flex flex-col justify-between relative p-4 border-b lg:border-b-0 lg:border-r border-gray-800">
+                <!-- Close Button (Mobile Only, floats on image) -->
+                <button onclick="closeGallery()" class="absolute top-6 right-6 lg:hidden z-50 bg-black/75 text-white p-2.5 rounded-full border border-gray-700 active:scale-95 transition-transform">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+
+                <!-- Counter badge -->
+                <div class="absolute top-6 left-6 z-40 bg-black/75 text-brand-accent px-3 py-1.5 rounded-full text-xs font-semibold border border-gray-800" id="gallery-counter">
+                    1 / X
+                </div>
+
+                <!-- Main Image Wrapper -->
+                <div class="flex-1 min-h-[300px] md:min-h-[400px] flex items-center justify-center relative group mt-8 lg:mt-0">
+                    <!-- Nav buttons inside wrapper -->
+                    <button id="prev-btn" class="absolute left-2 z-10 w-11 h-11 hidden md:flex items-center justify-center bg-black/60 text-white rounded-full hover:bg-brand-accent hover:text-brand-dark border border-gray-800 transition-all">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+
+                    <img id="gallery-main-img" src="" alt="Viatura" class="max-h-[350px] md:max-h-[420px] w-auto max-w-full object-contain rounded-lg select-none">
+
+                    <button id="next-btn" class="absolute right-2 z-10 w-11 h-11 hidden md:flex items-center justify-center bg-black/60 text-white rounded-full hover:bg-brand-accent hover:text-brand-dark border border-gray-800 transition-all">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Horizontal scrollable Thumbnails -->
+                <div class="mt-4 pt-3 border-t border-gray-900">
+                    <div class="gallery-thumbnails-wrapper flex gap-2 overflow-x-auto pb-2 px-1" id="gallery-thumbnails-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Mobile Navigation Controls (Bottom of Gallery) -->
+                <div class="md:hidden flex justify-center gap-4 mt-2">
+                    <button id="prev-btn-mobile" class="w-11 h-11 flex items-center justify-center bg-brand-light text-white rounded-full active:bg-brand-accent active:text-brand-dark border border-gray-700">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button id="next-btn-mobile" class="w-11 h-11 flex items-center justify-center bg-brand-light text-white rounded-full active:bg-brand-accent active:text-brand-dark border border-gray-700">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side: Details Pane -->
+            <div class="w-full lg:w-2/5 flex flex-col justify-between max-h-[90vh] lg:max-h-full overflow-y-auto p-6 md:p-8 bg-brand-card">
+
+                <!-- Header of details (Title and Close Button) -->
+                <div class="flex justify-between items-start gap-4 mb-6">
+                    <div>
+                        <h3 id="modal-car-title" class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">Viatura</h3>
+                        <p id="modal-car-subtitle" class="text-sm text-gray-400 mt-1">Carregando...</p>
+                    </div>
+                    <button onclick="closeGallery()" class="hidden lg:flex p-2 rounded-full bg-brand-light border border-gray-800 text-gray-400 hover:text-white hover:border-gray-600 transition-colors shrink-0">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Price Banner -->
+                <div class="bg-brand-dark border border-gray-800/80 rounded-2xl p-4 mb-6 flex items-center justify-between">
+                    <div>
+                        <span class="text-xs text-gray-500 uppercase font-semibold tracking-wider">Preço Chave na Mão</span>
+                        <div id="modal-car-price" class="text-3xl font-black text-brand-accent">0€</div>
+                    </div>
+                    <div class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full text-xs font-semibold flex items-center gap-1.5 animate-pulse">
+                        <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Em Stock
+                    </div>
+                </div>
+
+                <!-- Technical Specs Grid -->
+                <div class="mb-6">
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <i data-lucide="info" class="w-4 h-4 text-brand-accent"></i> Ficha Técnica
+                    </h4>
+                    <div id="modal-car-specs" class="grid grid-cols-2 gap-3">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Equipment List -->
+                <div class="mb-8">
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <i data-lucide="list-checks" class="w-4 h-4 text-brand-accent"></i> Equipamento & Extras
+                    </h4>
+                    <ul id="modal-car-equipment" class="space-y-2.5 max-h-[160px] overflow-y-auto pr-2 custom-scrollbar">
+                        <!-- Populated dynamically -->
+                    </ul>
+                </div>
+
+                <!-- Actions buttons -->
+                <div class="border-t border-gray-800/80 pt-6 mt-auto flex flex-col sm:flex-row gap-3">
+                    <a id="modal-whatsapp-btn" href="#" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-[0_4px_12px_rgba(37,211,102,0.2)] hover:scale-[1.02] text-sm">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        Contactar Stand
+                    </a>
+                    <a href="tel:+351913230398" class="inline-flex items-center justify-center gap-2 bg-brand-light hover:bg-gray-800 text-white font-semibold py-3.5 px-6 rounded-xl border border-gray-800 hover:border-gray-600 transition-colors text-sm">
+                        <i data-lucide="phone" class="w-5 h-5 text-gray-400"></i>
+                        Ligar
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="bg-[#0a0a0a] border-t border-gray-900 pt-16 pb-8">
