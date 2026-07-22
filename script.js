@@ -238,7 +238,7 @@ if (mobileCarouselImages.length > 0) {
         mobileCarouselImages[currentImageIndex].classList.remove('active');
         currentImageIndex = (currentImageIndex + 1) % mobileCarouselImages.length;
         mobileCarouselImages[currentImageIndex].classList.add('active');
-    }, 3000); // Changed to 3 seconds
+    }, 6000);
 }
 
 // Desktop Hero: single static BMW image (no carousel needed)
