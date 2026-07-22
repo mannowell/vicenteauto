@@ -241,20 +241,7 @@ if (mobileCarouselImages.length > 0) {
     }, 3000); // Changed to 3 seconds
 }
 
-// Desktop Hero Carousel
-const desktopCarouselImages = document.querySelectorAll('.desktop-hero-carousel .carousel-img');
-const desktopTitleElem = document.getElementById('desktop-carousel-title');
-if (desktopCarouselImages.length > 0) {
-    let currentImageIndex = 0;
-    setInterval(() => {
-        desktopCarouselImages[currentImageIndex].classList.remove('active');
-        currentImageIndex = (currentImageIndex + 1) % desktopCarouselImages.length;
-        desktopCarouselImages[currentImageIndex].classList.add('active');
-        if (desktopTitleElem && carTitles[currentImageIndex]) {
-            desktopTitleElem.textContent = carTitles[currentImageIndex];
-        }
-    }, 3000); // Changed to 3 seconds
-}
+// Desktop Hero: single static BMW image (no carousel needed)
 
 // Mobile Folder Footer Tabs
 window.switchFooterTab = function(tabId) {

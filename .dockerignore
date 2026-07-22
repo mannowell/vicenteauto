@@ -1,0 +1,8 @@
+.git
+.gitignore
+netlify.toml
+vercel.json
+package.json
+README.md
+.dockerignore
+dokploy.yml

@@ -1,0 +1,41 @@
+services:
+  vicenteauto:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vicenteauto
+    restart: unless-stopped
+    expose:
+      - "80"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 128M
+        reservations:
+          cpus: "0.1"
+          memory: 32M
+    labels:
+      - "traefik.enable=true"
+      # HTTP → HTTPS redirect
+      - "traefik.http.routers.vicenteauto.rule=Host(`vicenteauto.duckdns.org`)"
+      - "traefik.http.routers.vicenteauto.entrypoints=web"
+      - "traefik.http.routers.vicenteauto.middlewares=redirect-https"
+      - "traefik.http.middlewares.redirect-https.redirectscheme.scheme=https"
+      # HTTPS with Let's Encrypt
+      - "traefik.http.routers.vicenteauto-secure.rule=Host(`vicenteauto.duckdns.org`)"
+      - "traefik.http.routers.vicenteauto-secure.entrypoints=websecure"
+      - "traefik.http.routers.vicenteauto-secure.tls=true"
+      - "traefik.http.routers.vicenteauto-secure.tls.certresolver=letsencrypt"
+      - "traefik.http.services.vicenteauto.loadbalancer.server.port=80"
+
+networks:
+  default:
+    name: dokploy-network
+    external: true
