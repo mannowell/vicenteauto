@@ -147,8 +147,116 @@
                 </div>
             </div>
 
+            <!-- DYNAMIC WORKSHOP SERVICE BOOKING FORM -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-20 items-stretch">
+                <!-- Info Left (col-span-5) -->
+                <div class="lg:col-span-5 flex flex-col justify-between bg-brand-card p-8 rounded-3xl border border-gray-800 fade-up relative overflow-hidden">
+                    <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-brand-accent/5 rounded-full blur-2xl"></div>
+                    <div>
+                        <span class="text-xs text-brand-accent font-bold uppercase tracking-widest bg-brand-accent/10 px-3 py-1.5 rounded-full border border-brand-accent/20">Sem Complicações</span>
+                        <h3 class="text-3xl font-extrabold text-white mt-4 mb-4">Marcar Oficina <br><span class="text-brand-accent">Online</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Agende a manutenção ou reparação do seu veículo de forma rápida e 100% digital. Escolha o tipo de serviço que precisa, indique-nos a sua viatura e a data preferencial.
+                        </p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                            A nossa equipa irá validar a disponibilidade de imediato e confirmar o seu agendamento. Se preferir, também poderá pedir o orçamento diretamente.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-sm text-gray-300">
+                            <i data-lucide="shield" class="w-5 h-5 text-brand-accent shrink-0"></i>
+                            <span>Garantia de peças originais / alta qualidade</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-gray-300">
+                            <i data-lucide="clock-3" class="w-5 h-5 text-brand-accent shrink-0"></i>
+                            <span>Diagnóstico rápido e orçamento transparente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form Right (col-span-7) -->
+                <div class="lg:col-span-7 bg-brand-card p-8 rounded-3xl border border-gray-800 fade-up relative overflow-hidden shadow-2xl">
+                    <div class="absolute -right-16 -top-16 w-32 h-32 bg-brand-accent/5 rounded-full blur-2xl"></div>
+
+                    <h3 class="text-2xl font-bold text-white mb-2">Agendar Serviço</h3>
+                    <p class="text-gray-400 text-sm mb-6">Preencha os detalhes do seu agendamento abaixo.</p>
+
+                    <form id="booking-form" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="book-name" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Nome Completo *</label>
+                                <input type="text" id="book-name" required placeholder="Seu nome" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label for="book-phone" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Telemóvel *</label>
+                                <input type="tel" id="book-phone" required placeholder="912 345 678" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="book-service" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Serviço Pretendido *</label>
+                                <select id="book-service" required class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors appearance-none">
+                                    <option value="" disabled selected>Selecione o serviço</option>
+                                    <option value="Mecânica Geral">Mecânica Geral / Revisão</option>
+                                    <option value="Pintura Auto">Pintura Auto / Detalhe</option>
+                                    <option value="Bate-Chapas">Bate-Chapas / Colisão</option>
+                                    <option value="Preparação IPO">Preparação IPO (Pré-Inspeção)</option>
+                                    <option value="Outro Serviço">Outro Serviço / Diagnóstico</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="book-vehicle" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Marca, Modelo e Matrícula *</label>
+                                <input type="text" id="book-vehicle" required placeholder="Ex: BMW Série 1 (00-XX-00)" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="book-date" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Data Preferencial *</label>
+                                <input type="date" id="book-date" required class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label for="book-time" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Período Preferencial *</label>
+                                <select id="book-time" required class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors appearance-none">
+                                    <option value="" disabled selected>Selecione o horário</option>
+                                    <option value="Manhã (09:00 - 13:00)">Manhã (09:00 - 13:00)</option>
+                                    <option value="Tarde (14:00 - 19:00)">Tarde (14:00 - 19:00)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="book-notes" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Sintomas ou Notas Adicionais</label>
+                            <textarea id="book-notes" rows="3" placeholder="Descreva brevemente o que o carro precisa ou sintomas..." class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors resize-none"></textarea>
+                        </div>
+
+                        <!-- Buttons grid: WhatsApp and Standard -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                            <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-brand-dark font-bold py-4 px-6 rounded-xl transition-all shadow-[0_4px_12px_rgba(245,158,11,0.2)] hover:scale-[1.01] flex items-center justify-center gap-2">
+                                <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Serviço
+                            </button>
+                            <button type="button" onclick="submitBookingToWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-4 px-6 rounded-xl transition-all shadow-[0_4px_12px_rgba(37,211,102,0.2)] hover:scale-[1.01] flex items-center justify-center gap-2">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i> Enviar por WhatsApp
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Success State (Hidden by default) -->
+                    <div id="booking-success" class="hidden absolute inset-0 bg-brand-card flex flex-col items-center justify-center p-8 text-center animate-[fadeInTab_0.4s_ease-out_forwards]">
+                        <div class="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent mb-4 border border-brand-accent/20">
+                            <i data-lucide="check-circle" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-2">Agendamento Solicitado!</h4>
+                        <p class="text-gray-400 max-w-sm mb-6 text-sm">Agradecemos o seu pedido. Iremos verificar a nossa agenda técnica e entraremos em contacto para confirmar o seu horário.</p>
+                        <button onclick="resetBookingForm()" class="text-brand-accent hover:text-brand-accentHover text-sm font-semibold underline">Marcar outro serviço</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- CTA -->
-            <div class="bg-gradient-to-r from-brand-card to-brand-light rounded-3xl p-8 md:p-12 border border-gray-800 flex flex-col md:flex-row items-center justify-between fade-up">
+            <div class="bg-gradient-to-r from-brand-card to-brand-light rounded-3xl p-8 md:p-12 border border-gray-800 flex flex-col md:flex-row items-center justify-between fade-up mt-16">
                 <div class="mb-6 md:mb-0 md:pr-8">
                     <h3 class="text-2xl font-bold text-white mb-2">Precisa de orçamentar uma reparação?</h3>
                     <p class="text-gray-400">Envie-nos algumas fotos ou descreva o problema pelo WhatsApp e daremos um valor aproximado.</p>
