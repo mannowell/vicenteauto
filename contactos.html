@@ -98,9 +98,9 @@
                 <p class="text-gray-400 text-lg">Estamos no centro de Pontével, à sua espera. Venha visitar o nosso stand ou traga a sua viatura à nossa oficina.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <!-- Info Cards (col span 5) -->
-                <div class="lg:col-span-5 space-y-6 fade-up">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Info Cards -->
+                <div class="space-y-6 fade-up">
                     <div class="flex items-start gap-6 bg-brand-dark p-6 rounded-2xl border border-gray-800">
                         <div class="w-14 h-14 bg-brand-light rounded-xl flex items-center justify-center shrink-0">
                             <i data-lucide="map-pin" class="w-7 h-7 text-brand-accent"></i>
@@ -135,68 +135,9 @@
                     </div>
                 </div>
 
-                <!-- Contact Form (col span 7) -->
-                <div class="lg:col-span-7 bg-brand-dark p-8 rounded-3xl border border-gray-800 fade-up relative overflow-hidden shadow-2xl">
-                    <div class="absolute -right-16 -top-16 w-32 h-32 bg-brand-accent/5 rounded-full blur-2xl"></div>
-
-                    <h3 class="text-2xl font-bold text-white mb-2">Envie-nos uma Mensagem</h3>
-                    <p class="text-gray-400 text-sm mb-6">Preencha o formulário abaixo e entraremos em contacto consigo o mais breve possível.</p>
-
-                    <form id="contact-form" class="space-y-5">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            <div>
-                                <label for="form-name" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Nome Completo *</label>
-                                <input type="text" id="form-name" required placeholder="Seu nome" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
-                            </div>
-                            <div>
-                                <label for="form-email" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">E-mail *</label>
-                                <input type="email" id="form-email" required placeholder="seu@email.com" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            <div>
-                                <label for="form-phone" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Telefone / Telemóvel</label>
-                                <input type="tel" id="form-phone" placeholder="912 345 678" class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors">
-                            </div>
-                            <div>
-                                <label for="form-subject" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Assunto *</label>
-                                <select id="form-subject" required class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors appearance-none">
-                                    <option value="" disabled selected>Escolha uma opção</option>
-                                    <option value="Dúvida Geral">Dúvida Geral / Informações</option>
-                                    <option value="Interesse em Viatura">Interesse em Viatura em Stock</option>
-                                    <option value="Oficina Mecânica">Oficina Mecânica / Orçamento</option>
-                                    <option value="Outro">Outro Assunto</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="form-message" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Mensagem *</label>
-                            <textarea id="form-message" required rows="4" placeholder="Escreva aqui a sua mensagem..." class="w-full bg-brand-light border border-gray-800 focus:border-brand-accent text-white rounded-xl px-4 py-3 focus:outline-none transition-colors resize-none"></textarea>
-                        </div>
-
-                        <!-- Button -->
-                        <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-brand-dark font-bold py-4 px-6 rounded-xl transition-all shadow-[0_4px_12px_rgba(245,158,11,0.2)] hover:scale-[1.01] flex items-center justify-center gap-2">
-                            <i data-lucide="send" class="w-4 h-4"></i> Enviar Mensagem
-                        </button>
-                    </form>
-
-                    <!-- Success State (Hidden by default) -->
-                    <div id="form-success" class="hidden absolute inset-0 bg-brand-dark flex flex-col items-center justify-center p-8 text-center animate-[fadeInTab_0.4s_ease-out_forwards]">
-                        <div class="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent mb-4 border border-brand-accent/20">
-                            <i data-lucide="check-circle" class="w-8 h-8"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold text-white mb-2">Mensagem Enviada!</h4>
-                        <p class="text-gray-400 max-w-sm mb-6 text-sm">Agradecemos o seu contacto. A nossa equipa irá responder à sua mensagem o mais brevemente possível.</p>
-                        <button onclick="resetContactForm()" class="text-brand-accent hover:text-brand-accentHover text-sm font-semibold underline">Enviar nova mensagem</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Full width Map in new sub-section -->
-            <div class="mt-16 fade-up">
-                <div class="h-[400px] rounded-3xl overflow-hidden border border-gray-800 relative bg-brand-dark shadow-xl">
+                <!-- Map -->
+                <div class="h-[500px] rounded-2xl overflow-hidden border border-gray-800 fade-up relative bg-brand-dark">
+                    <!-- Updated Map Embed via coordinates: 39.154778,-8.806148 -->
                     <iframe 
                         src="https://maps.google.com/maps?q=39.154778,-8.806148&hl=pt-PT&z=15&output=embed" 
                         class="absolute inset-0 w-full h-full border-0" 

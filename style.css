@@ -107,34 +107,6 @@ body {
     z-index: 1;
 }
 
-/* Gallery Thumbnail buttons and customized Scrollbars for Thumbnails */
-.gallery-thumbnails-wrapper::-webkit-scrollbar {
-    height: 6px;
-}
-.gallery-thumbnails-wrapper::-webkit-scrollbar-track {
-    background: #111111;
-}
-.gallery-thumbnails-wrapper::-webkit-scrollbar-thumb {
-    background: #252525;
-    border-radius: 3px;
-}
-.gallery-thumbnails-wrapper::-webkit-scrollbar-thumb:hover {
-    background: #f59e0b;
-}
-
-.gallery-thumb-btn {
-    opacity: 0.6;
-    border-color: transparent;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.gallery-thumb-btn:hover {
-    opacity: 0.9;
-    border-color: #252525;
-}
-.gallery-thumb-btn.border-brand-accent {
-    opacity: 1 !important;
-}
-
 /* Revolutionary Mobile Footer Tabs */
 .mobile-folder-tabs {
     display: flex;
